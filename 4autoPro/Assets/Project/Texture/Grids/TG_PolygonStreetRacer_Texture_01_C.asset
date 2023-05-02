@@ -1,0 +1,153 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93e385b20f6cdf54f89b327c2248de7a, type: 3}
+  m_Name: TG_PolygonStreetRacer_Texture_01_C
+  m_EditorClassIdentifier: 
+  gridColorMode: 1
+  gridColor: {r: 1, g: 1, b: 1, a: 1}
+  gridsList:
+  - handlesPos: 0
+    vLinesOnCanvasGrid:
+    - 0
+    - 525
+    hLinesOnCanvasGrid:
+    - 262.5
+    - 0
+    tg: {fileID: 11400000}
+    gridOnCanvas:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 525
+      height: 262.5
+    mouseInsideRectPos: {x: 678, y: 251}
+    gridColor:
+      serializedVersion: 2
+      rgba: 4294967295
+    gridLabel: Flat Color Grid
+    editGridName: 0
+    isSelected: 0
+    showGridOptions: 1
+    isSelectionLocked: 1
+    isHandleSelected: 0
+    isGridPosLocked: 1
+    isOverlapping: 0
+    handleID: -1
+    vLinesOnTexGrid: 0000000000100000
+    hLinesOnTexGrid: 0000000000080000
+    tintColor:
+      serializedVersion: 2
+      rgba: 4294967295
+    emptySpaceColor:
+      serializedVersion: 2
+      rgba: 4294967295
+    gridPos: {x: 0, y: 2048}
+    gridWidth: 4096
+    gridHeight: 2048
+    gridColumns: 1
+    gridRows: 1
+    hasEmptySpace: 0
+    isTexPattern: 0
+  - handlesPos: 1
+    vLinesOnCanvasGrid:
+    - 0
+    - 7.6904297
+    - 15.380859
+    - 23.07129
+    - 31.14624
+    - 39.349365
+    - 47.296143
+    - 55.371094
+    - 63.189697
+    - 70.75195
+    - 74.72534
+    - 79.08325
+    - 87.1582
+    - 94.84863
+    - 103.05176
+    - 110.74219
+    - 119.07349
+    - 126.50757
+    - 134.7107
+    - 142.5293
+    - 150.8606
+    - 158.55103
+    - 166.62598
+    - 174.3164
+    - 182.26318
+    - 185.5957
+    - 190.20996
+    - 198.41309
+    - 206.48804
+    - 214.56299
+    - 224.17603
+    - 232.25098
+    - 242.37671
+    - 252.37427
+    - 262.5
+    hLinesOnCanvasGrid:
+    - 57.2937
+    - 47.808838
+    - 34.86328
+    - 21.533203
+    - 8.71582
+    - 0
+    tg: {fileID: 11400000}
+    gridOnCanvas:
+      serializedVersion: 2
+      x: 0
+      y: 262.5
+      width: 262.5
+      height: 57.2937
+    mouseInsideRectPos: {x: 1569, y: -2174}
+    gridColor:
+      serializedVersion: 2
+      rgba: 4294967295
+    gridLabel: Flat Color Grid
+    editGridName: 0
+    isSelected: 1
+    showGridOptions: 1
+    isSelectionLocked: 1
+    isHandleSelected: 0
+    isGridPosLocked: 1
+    isOverlapping: 0
+    handleID: -1
+    vLinesOnTexGrid: 000000003c00000078000000b4000000f30000003301000071010000b0010000ed010000280200004702000069020000a8020000e40200002403000060030000a1030000db0300001b0400005804000099040000d504000014050000500500008e050000a8050000cc0500000c0600004b0600008a060000d50600001407000063070000b107000000080000
+    hLinesOnTexGrid: 000000004a000000af000000170100007b010000bf010000
+    tintColor:
+      serializedVersion: 2
+      rgba: 4294967295
+    emptySpaceColor:
+      serializedVersion: 2
+      rgba: 4294967295
+    gridPos: {x: 0, y: 1601}
+    gridWidth: 2048
+    gridHeight: 447
+    gridColumns: 34
+    gridRows: 5
+    hasEmptySpace: 0
+    isTexPattern: 0
+  copyList: []
+  texAtlas: {fileID: 2800000, guid: e1f95a65fc258d049adfd8bfc1360a65, type: 3}
+  originTexAtlas: {fileID: 0}
+  originOffset: {x: 325, y: 50}
+  sizeOffset: {x: -3571, y: -3571}
+  showShortcuts: 0
+  zoomSpeed: 80
+  handleSize: 10
+  canvasBorder: 50
+  panelDefaultWidth: 250
+  sidePanelWidth: 250
+  showPanel: 1
+  drawAxes: 1
+  drawGrid: 1
+  texAtlasSize: {x: 0, y: 0}
