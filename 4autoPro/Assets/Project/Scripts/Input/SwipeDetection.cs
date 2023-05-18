@@ -9,7 +9,6 @@ public class SwipeDetection : MonoBehaviour
     [SerializeField] private float minimumDistance = .2f;
     [SerializeField] private float maximumTime = 1f;
     [SerializeField][Range(0f, 1f)] private float directionThreshold = .9f;
-    [SerializeField][Range(0f, 1f)] private float diagonalThreshold = .5f;
     [SerializeField] private GameObject trail;
 
     private Vector2 startPosition;
@@ -107,31 +106,5 @@ public class SwipeDetection : MonoBehaviour
             Debug.Log("Right");
             OnSwipeRight?.Invoke();
         }
-
-        //if ((Vector2.Dot(Vector2.down, direction) > diagonalThreshold) && (Vector2.Dot(Vector2.left, direction) > diagonalThreshold))
-        //{
-        //    Debug.Log("Down Left Diagonal");
-        //    OnSwipeDown?.Invoke();
-        //    OnSwipeLeft?.Invoke();
-        //}
-        //if ((Vector2.Dot(Vector2.down, direction) > diagonalThreshold) && (Vector2.Dot(Vector2.right, direction) > diagonalThreshold))
-        //{
-        //    Debug.Log("Down Right Diagonal");
-        //    OnSwipeDown?.Invoke();
-        //    OnSwipeRight?.Invoke();
-        //}
-
-        //if ((Vector2.Dot(Vector2.up, direction) > diagonalThreshold) && (Vector2.Dot(Vector2.left, direction) > diagonalThreshold))
-        //{
-        //    Debug.Log("Up Left Diagonal");
-        //    OnSwipeUp?.Invoke();
-        //    OnSwipeLeft?.Invoke();
-        //}
-        //if ((Vector2.Dot(Vector2.up, direction) > diagonalThreshold) && (Vector2.Dot(Vector2.right, direction) > diagonalThreshold))
-        //{
-        //    Debug.Log("Up Right Diagonal");
-        //    OnSwipeUp?.Invoke();
-        //    OnSwipeRight?.Invoke();
-        //}
     }
 }
