@@ -10,11 +10,11 @@ Material:
   m_Name: Candle
   m_Shader: {fileID: 4800000, guid: 8d1e11e2ed137c34199ef6dcb8d6a88d, type: 3}
   m_ValidKeywords:
+  - CURVEDWORLD_BEND_TYPE_TWISTEDSPIRAL_X_POSITIVE
   - _EMISSION
   - _NORMALMAP
   m_InvalidKeywords:
   - CURVEDWORLD_BEND_ID_1
-  - CURVEDWORLD_BEND_TYPE_TWISTEDSPIRAL_X_POSITIVE
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1

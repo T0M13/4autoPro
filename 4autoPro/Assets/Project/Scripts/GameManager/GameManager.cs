@@ -11,18 +11,21 @@ public class GameManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private ChunkManager chunkManager;
     [SerializeField] private PlayerReferences playerReferences;
+    [SerializeField] private UIManager uIManager;
     [Header("Game Positions")]
     [SerializeField] private Vector3 startPosition;
-    [Header("Item Settings")]
-    [SerializeField] private int itemsSpeed = 1;
+    //[Header("Item Settings")]
+    //[SerializeField] private int itemsSpeed = 1;
     [Header("Player Stats")]
     [SerializeField] private int health = 1;
     [SerializeField] private int coins;
+    [SerializeField] private float score;
     [Header("Save/Load")]
     [SerializeField] private SaveComponent saveBehaviour;
     [SerializeField] private LoadComponent loadBehaviour;
     [Header("Saved Stats")]
     [SerializeField] private int playerProfileCoins;
+    [SerializeField] private float playerProfileScore;
 
     public Vector3 StartPosition { get => startPosition; set => startPosition = value; }
 
@@ -58,7 +61,6 @@ public class GameManager : MonoBehaviour
         OnMagnetPowerUp -= MagnetPowerUp;
         OnSpeedPowerUp -= SpeedPowerUp;
 
-
     }
 
     private void Awake()
@@ -83,6 +85,9 @@ public class GameManager : MonoBehaviour
 
         if (playerReferences == null)
             playerReferences = FindObjectOfType<PlayerReferences>();
+
+        if (uIManager == null)
+            uIManager = FindObjectOfType<UIManager>();
     }
 
     private void AddCoin()
@@ -94,8 +99,18 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         SaveData.PlayerProfile.coins += coins;
+        if (SaveData.PlayerProfile.score < score)
+            SaveData.PlayerProfile.score = score;
         Save();
         Debug.Log("Game Over");
+    }
+
+    private void Update()
+    {
+        if (playerReferences.PlayerStats.Exploded) return;
+        score = Time.time;
+        if (uIManager != null)
+            uIManager.ScoreUI.text = (Mathf.RoundToInt(score)).ToString();
     }
 
     public void GetDamage(int damageValue)
@@ -103,7 +118,7 @@ public class GameManager : MonoBehaviour
         health -= damageValue;
         if (health <= 0)
         {
-            GameOver();
+            playerReferences.PlayerStats.OnExplode?.Invoke();
         }
     }
 
@@ -135,5 +150,6 @@ public class GameManager : MonoBehaviour
         loadBehaviour.Load();
 
         playerProfileCoins = SaveData.PlayerProfile.coins;
+        playerProfileScore = SaveData.PlayerProfile.score;
     }
 }

@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4064177501832552768}
   - component: {fileID: 646579202}
   - component: {fileID: 3674336042159738910}
-  m_Layer: 0
+  - component: {fileID: 3835135797532469400}
+  m_Layer: 7
   m_Name: ChunkVariant1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,6 +79,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 0.5, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &3835135797532469400
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4064177501832552769}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 1
 --- !u!1001 &474806267193938871
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -88,6 +105,10 @@ PrefabInstance:
     - target: {fileID: 1011809816779636, guid: 9c55b55e78888da4fa578506636987e6, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Barrier_Tyre_StackC_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011809816779636, guid: 9c55b55e78888da4fa578506636987e6, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4282428910947744, guid: 9c55b55e78888da4fa578506636987e6, type: 3}
       propertyPath: m_RootOrder
@@ -133,7 +154,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 64137129001667408, guid: 9c55b55e78888da4fa578506636987e6,
+        type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 64137129001667408, guid: 9c55b55e78888da4fa578506636987e6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9c55b55e78888da4fa578506636987e6, type: 3}
 --- !u!4 &475674089327566359 stripped
 Transform:
@@ -151,6 +178,10 @@ PrefabInstance:
     - target: {fileID: 1011809816779636, guid: 9c55b55e78888da4fa578506636987e6, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Barrier_Tyre_StackC_02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011809816779636, guid: 9c55b55e78888da4fa578506636987e6, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4282428910947744, guid: 9c55b55e78888da4fa578506636987e6, type: 3}
       propertyPath: m_RootOrder
@@ -196,7 +227,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 64137129001667408, guid: 9c55b55e78888da4fa578506636987e6,
+        type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 64137129001667408, guid: 9c55b55e78888da4fa578506636987e6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9c55b55e78888da4fa578506636987e6, type: 3}
 --- !u!4 &2409932899193122137 stripped
 Transform:
@@ -214,6 +251,10 @@ PrefabInstance:
     - target: {fileID: 1856525799824202, guid: 7860c3f29b9993a4daadd9ba4ccc50ae, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Barrier_Curb_Straight_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1856525799824202, guid: 7860c3f29b9993a4daadd9ba4ccc50ae, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4582799589886172, guid: 7860c3f29b9993a4daadd9ba4ccc50ae, type: 3}
       propertyPath: m_RootOrder
@@ -259,7 +300,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64317554957770890, guid: 7860c3f29b9993a4daadd9ba4ccc50ae, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7860c3f29b9993a4daadd9ba4ccc50ae, type: 3}
 --- !u!4 &2618042144555252130 stripped
 Transform:
@@ -277,6 +319,10 @@ PrefabInstance:
     - target: {fileID: 1194138095297268, guid: 916580ebc9d1aaf488a420d5a124f8a6, type: 3}
       propertyPath: m_Name
       value: SM_Env_Ground_Lines_Yellow_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1194138095297268, guid: 916580ebc9d1aaf488a420d5a124f8a6, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4584932015176348, guid: 916580ebc9d1aaf488a420d5a124f8a6, type: 3}
       propertyPath: m_RootOrder
@@ -356,6 +402,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Ground_Lines_Yellow_01 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 1194138095297268, guid: 916580ebc9d1aaf488a420d5a124f8a6, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4584932015176348, guid: 916580ebc9d1aaf488a420d5a124f8a6, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -433,6 +483,10 @@ PrefabInstance:
     - target: {fileID: 1194138095297268, guid: 916580ebc9d1aaf488a420d5a124f8a6, type: 3}
       propertyPath: m_Name
       value: SM_Env_Ground_Lines_Yellow_01 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1194138095297268, guid: 916580ebc9d1aaf488a420d5a124f8a6, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4584932015176348, guid: 916580ebc9d1aaf488a420d5a124f8a6, type: 3}
       propertyPath: m_RootOrder
@@ -512,6 +566,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Ground_Lines_Yellow_01 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1194138095297268, guid: 916580ebc9d1aaf488a420d5a124f8a6, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4584932015176348, guid: 916580ebc9d1aaf488a420d5a124f8a6, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -589,6 +647,10 @@ PrefabInstance:
     - target: {fileID: 1194138095297268, guid: 916580ebc9d1aaf488a420d5a124f8a6, type: 3}
       propertyPath: m_Name
       value: SM_Env_Ground_Lines_Yellow_01 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1194138095297268, guid: 916580ebc9d1aaf488a420d5a124f8a6, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4584932015176348, guid: 916580ebc9d1aaf488a420d5a124f8a6, type: 3}
       propertyPath: m_RootOrder
@@ -668,6 +730,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Ground_Lines_Yellow_01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1194138095297268, guid: 916580ebc9d1aaf488a420d5a124f8a6, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4584932015176348, guid: 916580ebc9d1aaf488a420d5a124f8a6, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -745,6 +811,10 @@ PrefabInstance:
     - target: {fileID: 1194138095297268, guid: 916580ebc9d1aaf488a420d5a124f8a6, type: 3}
       propertyPath: m_Name
       value: SM_Env_Ground_Lines_Yellow_01 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1194138095297268, guid: 916580ebc9d1aaf488a420d5a124f8a6, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4584932015176348, guid: 916580ebc9d1aaf488a420d5a124f8a6, type: 3}
       propertyPath: m_RootOrder
@@ -824,6 +894,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Ground_Lines_Yellow_01 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1194138095297268, guid: 916580ebc9d1aaf488a420d5a124f8a6, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4584932015176348, guid: 916580ebc9d1aaf488a420d5a124f8a6, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -901,6 +975,10 @@ PrefabInstance:
     - target: {fileID: 1194138095297268, guid: 916580ebc9d1aaf488a420d5a124f8a6, type: 3}
       propertyPath: m_Name
       value: SM_Env_Ground_Lines_Yellow_01 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1194138095297268, guid: 916580ebc9d1aaf488a420d5a124f8a6, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4584932015176348, guid: 916580ebc9d1aaf488a420d5a124f8a6, type: 3}
       propertyPath: m_RootOrder
@@ -980,6 +1058,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Ground_Lines_Yellow_01 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1194138095297268, guid: 916580ebc9d1aaf488a420d5a124f8a6, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4584932015176348, guid: 916580ebc9d1aaf488a420d5a124f8a6, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1058,6 +1140,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Barrier_Tyre_StackC_02 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1011809816779636, guid: 9c55b55e78888da4fa578506636987e6, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4282428910947744, guid: 9c55b55e78888da4fa578506636987e6, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -1102,7 +1188,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 64137129001667408, guid: 9c55b55e78888da4fa578506636987e6,
+        type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 64137129001667408, guid: 9c55b55e78888da4fa578506636987e6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9c55b55e78888da4fa578506636987e6, type: 3}
 --- !u!4 &4321824561015715904 stripped
 Transform:
@@ -1120,6 +1212,10 @@ PrefabInstance:
     - target: {fileID: 1856525799824202, guid: 7860c3f29b9993a4daadd9ba4ccc50ae, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Barrier_Curb_Straight_02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1856525799824202, guid: 7860c3f29b9993a4daadd9ba4ccc50ae, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4582799589886172, guid: 7860c3f29b9993a4daadd9ba4ccc50ae, type: 3}
       propertyPath: m_RootOrder
@@ -1165,7 +1261,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64317554957770890, guid: 7860c3f29b9993a4daadd9ba4ccc50ae, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7860c3f29b9993a4daadd9ba4ccc50ae, type: 3}
 --- !u!4 &4703404182577977238 stripped
 Transform:

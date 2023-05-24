@@ -8,6 +8,7 @@ namespace tomi.SaveSystem
     public class PlayerProfile
     {
         public int coins;
+        public float score;
 
         public int masterVolume;
         public int musicVolume;

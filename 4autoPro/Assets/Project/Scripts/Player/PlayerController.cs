@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
+    PlayerReferences playerReferences;
     [Header("Player Settings")]
     [SerializeField] private Vector3 startPosition;
     [SerializeField] private float laneSwitchForce = 2.5f;
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        playerReferences = GetComponent<PlayerReferences>();
         currentLane = Lane.Middle;
     }
 
@@ -44,6 +46,7 @@ public class PlayerController : MonoBehaviour
 
     private void SwipeLeft()
     {
+        if (playerReferences.PlayerStats.Exploded || !playerReferences.PlayerStats.CanUseLogic) return;
         if (currentLane == Lane.Middle)
         {
             currentLane = Lane.Left;
@@ -60,6 +63,8 @@ public class PlayerController : MonoBehaviour
 
     private void SwipeRight()
     {
+        if (playerReferences.PlayerStats.Exploded || !playerReferences.PlayerStats.CanUseLogic) return;
+
         if (currentLane == Lane.Middle)
         {
             currentLane = Lane.Right;
@@ -77,7 +82,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator RotateVehicle(float targetAngle)
     {
         Quaternion initialRotation = transform.rotation;
-        Quaternion targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x,/* transform.rotation.eulerAngles.y +*/ targetAngle, transform.rotation.eulerAngles.z);
+        Quaternion targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, targetAngle, transform.rotation.eulerAngles.z);
 
         float t = 0f;
         while (t < 1f)
@@ -93,8 +98,9 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator RotateVehicleBack(float targetAngle)
     {
+
         Quaternion initialRotation = transform.rotation;
-        Quaternion targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x,/* transform.rotation.eulerAngles.y +*/ targetAngle, transform.rotation.eulerAngles.z);
+        Quaternion targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, targetAngle, transform.rotation.eulerAngles.z);
 
         float t = 0f;
         while (t < 1f)
@@ -109,6 +115,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (playerReferences.PlayerStats.Exploded || !playerReferences.PlayerStats.CanUseLogic) return;
+
         pos = transform.position;
         rotation = transform.rotation;
         right = rotation * Vector3.right;
