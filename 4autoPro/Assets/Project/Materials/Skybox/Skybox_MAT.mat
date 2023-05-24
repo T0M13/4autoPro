@@ -60,7 +60,7 @@ Material:
     - _StarSize: 60
     - _Stars: 4.35
     m_Colors:
-    - _ColorBottom: {r: 0, g: 0.38679248, b: 0.31591415, a: 0}
-    - _ColorTop: {r: 0, g: 0.13046524, b: 0.6037736, a: 0}
+    - _ColorBottom: {r: 0, g: 0.30929124, b: 0.3882353, a: 0}
+    - _ColorTop: {r: 0.6039216, g: 0.3121816, b: 0, a: 0}
     - _Tiling: {r: 6, g: 5, b: 0, a: 0}
   m_BuildTextureStacks: []

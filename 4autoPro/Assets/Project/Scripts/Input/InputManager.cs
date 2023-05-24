@@ -18,19 +18,17 @@ public class InputManager : MonoBehaviour
     public SwipeDetection swipeDetector;
 
     private Controls playerControls;
-    private Camera mainCamera;
+    [SerializeField] private Camera mainCamera;
 
     private void Awake()
     {
-        if (instance == null)
+        if (instance != null && instance != this)
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
+            Destroy(this.gameObject);
         }
         else
         {
-            Destroy(gameObject);
-            return;
+            instance = this;
         }
 
         swipeDetector = GetComponent<SwipeDetection>();

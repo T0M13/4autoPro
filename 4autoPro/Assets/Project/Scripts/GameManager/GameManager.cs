@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using tomi.SaveSystem;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -45,9 +46,12 @@ public class GameManager : MonoBehaviour
         OnLoad += Load;
         OnGameOver += GameOver;
         OnGetDamage += GetDamage;
+        InputManager.instance.swipeDetector.OnSwipeUp += RestartGame;
+
 
         OnMagnetPowerUp += MagnetPowerUp;
         OnSpeedPowerUp += SpeedPowerUp;
+
     }
 
     private void OnDisable()
@@ -57,23 +61,23 @@ public class GameManager : MonoBehaviour
         OnLoad -= Load;
         OnGameOver -= GameOver;
         OnGetDamage -= GetDamage;
+        InputManager.instance.swipeDetector.OnSwipeUp -= RestartGame;
 
         OnMagnetPowerUp -= MagnetPowerUp;
         OnSpeedPowerUp -= SpeedPowerUp;
 
     }
 
+
     private void Awake()
     {
-        if (instance == null)
+        if (instance != null && instance != this)
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
+            Destroy(this.gameObject);
         }
         else
         {
-            Destroy(gameObject);
-            return;
+            instance = this;
         }
 
         Load();
@@ -108,10 +112,21 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         if (playerReferences.PlayerStats.Exploded) return;
-        score = Time.time;
+        score += Time.deltaTime;
+        score = score % 60;
+
         if (uIManager != null)
             uIManager.ScoreUI.text = (Mathf.RoundToInt(score)).ToString();
     }
+
+    private void RestartGame()
+    {
+        score = 0;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Debug.Log("Restarting");
+
+    }
+
 
     public void GetDamage(int damageValue)
     {
