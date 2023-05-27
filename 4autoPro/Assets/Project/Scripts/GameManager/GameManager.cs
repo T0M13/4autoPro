@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     [Header("Player Stats")]
     [SerializeField] private int health = 1;
     [SerializeField] private int coins;
-    [SerializeField] private float score;
+    [SerializeField] private float timeScore;
     [Header("Save/Load")]
     [SerializeField] private SaveComponent saveBehaviour;
     [SerializeField] private LoadComponent loadBehaviour;
@@ -103,8 +103,8 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         SaveData.PlayerProfile.coins += coins;
-        if (SaveData.PlayerProfile.score < score)
-            SaveData.PlayerProfile.score = score;
+        if (SaveData.PlayerProfile.timeScore < timeScore)
+            SaveData.PlayerProfile.timeScore = timeScore;
         Save();
         Debug.Log("Game Over");
     }
@@ -112,16 +112,15 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         if (playerReferences.PlayerStats.Exploded) return;
-        score += Time.deltaTime;
-        score = score % 60;
+        timeScore += Time.deltaTime;
 
         if (uIManager != null)
-            uIManager.ScoreUI.text = (Mathf.RoundToInt(score)).ToString();
+            uIManager.TimeScoreUI.text = (Mathf.RoundToInt(timeScore)).ToString();
     }
 
     private void RestartGame()
     {
-        score = 0;
+        timeScore = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Debug.Log("Restarting");
 
@@ -165,6 +164,6 @@ public class GameManager : MonoBehaviour
         loadBehaviour.Load();
 
         playerProfileCoins = SaveData.PlayerProfile.coins;
-        playerProfileScore = SaveData.PlayerProfile.score;
+        playerProfileScore = SaveData.PlayerProfile.timeScore;
     }
 }

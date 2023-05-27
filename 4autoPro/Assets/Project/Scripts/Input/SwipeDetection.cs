@@ -32,12 +32,18 @@ public class SwipeDetection : MonoBehaviour
     {
         inputManager.OnStartTouch += SwipeStart;
         inputManager.OnEndTouch += SwipeEnd;
+
+        inputManager.OnMovement += CheckDirection;
+
     }
 
     private void OnDisable()
     {
         inputManager.OnStartTouch -= SwipeStart;
         inputManager.OnEndTouch -= SwipeEnd;
+
+        inputManager.OnMovement -= CheckDirection;
+
     }
 
     private void SwipeStart(Vector2 position, float time)
@@ -102,6 +108,31 @@ public class SwipeDetection : MonoBehaviour
             OnSwipeLeft?.Invoke();
         }
         if (Vector2.Dot(Vector2.right, direction) > directionThreshold)
+        {
+            Debug.Log("Right");
+            OnSwipeRight?.Invoke();
+        }
+    }
+
+
+    private void CheckDirection(Vector2 movement)
+    {
+        if (movement == Vector2.up)
+        {
+            Debug.Log("Up");
+            OnSwipeUp?.Invoke();
+        }
+        if (movement == Vector2.down)
+        {
+            Debug.Log("Down");
+            OnSwipeDown?.Invoke();
+        }
+        if (movement == Vector2.left)
+        {
+            Debug.Log("Left");
+            OnSwipeLeft?.Invoke();
+        }
+        if (movement == Vector2.right)
         {
             Debug.Log("Right");
             OnSwipeRight?.Invoke();

@@ -6,5 +6,5 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreUI;
-    public TextMeshProUGUI ScoreUI { get => scoreUI; set => scoreUI = value; }
+    public TextMeshProUGUI TimeScoreUI { get => scoreUI; set => scoreUI = value; }
 }

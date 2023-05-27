@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [Header("Player Settings")]
     [SerializeField] private Vector3 startPosition;
     [SerializeField] private float laneSwitchForce = 2.5f;
+    [SerializeField] private float interpolationFactor = 8f;
     [SerializeField] private Lane currentLane = Lane.Middle;
     [Header("Lane Settings")]
     [SerializeField] private float laneXDistance = 4f;
@@ -21,6 +22,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 pos;
     private Quaternion rotation;
     private Vector3 right;
+
+    private Coroutine coroutine;
 
     [Header("Events")]
     public UnityEvent swipeRight;
@@ -36,12 +39,15 @@ public class PlayerController : MonoBehaviour
     {
         InputManager.instance.swipeDetector.OnSwipeLeft += SwipeLeft;
         InputManager.instance.swipeDetector.OnSwipeRight += SwipeRight;
+
     }
 
     private void OnDisable()
     {
         InputManager.instance.swipeDetector.OnSwipeLeft -= SwipeLeft;
         InputManager.instance.swipeDetector.OnSwipeRight -= SwipeRight;
+
+
     }
 
     private void SwipeLeft()
@@ -51,13 +57,17 @@ public class PlayerController : MonoBehaviour
         {
             currentLane = Lane.Left;
             swipeLeft?.Invoke();
-            StartCoroutine(RotateVehicle(-laneSwitchRotation));
+            if (coroutine != null)
+                StopCoroutine(coroutine);
+            coroutine = StartCoroutine(RotateVehicle(-laneSwitchRotation));
         }
         else if (currentLane == Lane.Right)
         {
             currentLane = Lane.Middle;
             swipeLeft?.Invoke();
-            StartCoroutine(RotateVehicle(-laneSwitchRotation));
+            if (coroutine != null)
+                StopCoroutine(coroutine);
+            coroutine = StartCoroutine(RotateVehicle(-laneSwitchRotation));
         }
     }
 
@@ -69,13 +79,18 @@ public class PlayerController : MonoBehaviour
         {
             currentLane = Lane.Right;
             swipeRight?.Invoke();
-            StartCoroutine(RotateVehicle(laneSwitchRotation));
+            if (coroutine != null)
+                StopCoroutine(coroutine);
+            coroutine = StartCoroutine(RotateVehicle(laneSwitchRotation));
         }
         else if (currentLane == Lane.Left)
         {
             currentLane = Lane.Middle;
             swipeRight?.Invoke();
-            StartCoroutine(RotateVehicle(laneSwitchRotation));
+
+            if (coroutine != null)
+                StopCoroutine(coroutine);
+            coroutine = StartCoroutine(RotateVehicle(laneSwitchRotation));
         }
     }
 
@@ -93,6 +108,8 @@ public class PlayerController : MonoBehaviour
         }
 
         transform.rotation = targetRotation;
+
+
         StartCoroutine(RotateVehicleBack(0));
     }
 
@@ -113,6 +130,7 @@ public class PlayerController : MonoBehaviour
         transform.rotation = targetRotation;
     }
 
+
     private void Update()
     {
         if (playerReferences.PlayerStats.Exploded || !playerReferences.PlayerStats.CanUseLogic) return;
@@ -122,7 +140,7 @@ public class PlayerController : MonoBehaviour
         right = rotation * Vector3.right;
 
         pos = startPosition + (laneXDistance * (float)currentLane) * right;
-        transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * laneSwitchForce);
+        transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * laneSwitchForce * interpolationFactor);
     }
 
     private void OnDrawGizmos()

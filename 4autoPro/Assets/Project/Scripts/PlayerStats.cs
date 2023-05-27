@@ -43,6 +43,7 @@ public class PlayerStats : MonoBehaviour
         if (invincible) return;
         if (Exploded) return;
         explosionEffect.SetActive(true);
+        explosionEffect.transform.SetParent(null, true);
         foreach (GameObject deleteObject in deleteObjects)
         {
             deleteObject.SetActive(false);
