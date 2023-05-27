@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [Header("Player Settings")]
     [SerializeField] private Vector3 startPosition;
     [SerializeField] private float laneSwitchForce = 2.5f;
-    [SerializeField] private float interpolationFactor = 8f;
+    [SerializeField] private float interpolationFactor = 2f;
     [SerializeField] private Lane currentLane = Lane.Middle;
     [Header("Lane Settings")]
     [SerializeField] private float laneXDistance = 4f;
@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
     {
         playerReferences = GetComponent<PlayerReferences>();
         currentLane = Lane.Middle;
+
+        GetStats();
     }
 
     private void OnEnable()
@@ -48,6 +50,12 @@ public class PlayerController : MonoBehaviour
         InputManager.instance.swipeDetector.OnSwipeRight -= SwipeRight;
 
 
+    }
+
+    private void GetStats()
+    {
+        if (playerReferences == null) return;
+        interpolationFactor = playerReferences.VehicleStats.speedFactor;
     }
 
     private void SwipeLeft()

@@ -39,6 +39,7 @@ namespace PolygonArsenal
             {
                 float life = m_Source.clip.length / m_Source.pitch;
                 Destroy(m_Sound, life);
+                Destroy(gameObject, life + 1);
             }
         }
     }

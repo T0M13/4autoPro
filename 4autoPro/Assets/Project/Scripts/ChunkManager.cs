@@ -53,6 +53,7 @@ public class ChunkManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.GameOver) return;
         carSpawnTimer += Time.deltaTime;
 
         if (carSpawnTimer > Random.Range(carSpawnRateMin, carSpawnRateMax))
@@ -219,20 +220,35 @@ public class ChunkManager : MonoBehaviour
     {
         thisCar.gameObject.SetActive(false);
         thisCar.ResetCar();
+        if (thisCar.Exploded)
+            RespawnCar(thisCar);
+    }
+
+    private void RespawnCar(RoadCar thisCar)
+    {
+        carList.Remove(thisCar.gameObject);
+        GameObject car = (GameObject)Instantiate(cars[thisCar.CarIndex]);
+        carList.Add(car);
+        car.transform.Rotate(Vector3.up * 180);
+        car.transform.SetParent(transform, false);
+        car.SetActive(false);
+
+        car.GetComponent<RoadCar>().spawner = this;
     }
 
     private void InitializeCars()
     {
-        int chunkIndex = 0;
+        int carIndex = 0;
         for (int i = 0; i < carAmount; i++)
         {
-            GameObject car = (GameObject)Instantiate(cars[chunkIndex]);
+            GameObject car = (GameObject)Instantiate(cars[carIndex]);
             carList.Add(car);
             car.transform.Rotate(Vector3.up * 180);
             car.transform.SetParent(transform, false);
-            car.SetActive(false);
+            car.SetActive(false);            
 
             car.GetComponent<RoadCar>().spawner = this;
+            car.GetComponent<RoadCar>().CarIndex = carIndex;
 
             switch (ChunkDirection)
             {
@@ -257,8 +273,8 @@ public class ChunkManager : MonoBehaviour
                     break;
             }
 
-            if (++chunkIndex >= cars.Length)
-                chunkIndex = 0;
+            if (++carIndex >= cars.Length)
+                carIndex = 0;
         }
     }
 

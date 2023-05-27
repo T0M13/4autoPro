@@ -15,10 +15,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIManager uIManager;
     [Header("Game Positions")]
     [SerializeField] private Vector3 startPosition;
+    [SerializeField] private bool gameOver;
     //[Header("Item Settings")]
     //[SerializeField] private int itemsSpeed = 1;
     [Header("Player Stats")]
-    [SerializeField] private int health = 1;
     [SerializeField] private int coins;
     [SerializeField] private float timeScore;
     [Header("Save/Load")]
@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float playerProfileScore;
 
     public Vector3 StartPosition { get => startPosition; set => startPosition = value; }
+    public bool GameOver { get => gameOver; set => gameOver = value; }
 
     public Action OnAddCoin;
     public Action<int> OnGetDamage;
@@ -44,7 +45,7 @@ public class GameManager : MonoBehaviour
         OnAddCoin += AddCoin;
         OnSave += Save;
         OnLoad += Load;
-        OnGameOver += GameOver;
+        OnGameOver += CallGameOver;
         OnGetDamage += GetDamage;
         InputManager.instance.swipeDetector.OnSwipeUp += RestartGame;
 
@@ -59,7 +60,7 @@ public class GameManager : MonoBehaviour
         OnAddCoin -= AddCoin;
         OnSave -= Save;
         OnLoad -= Load;
-        OnGameOver -= GameOver;
+        OnGameOver -= CallGameOver;
         OnGetDamage -= GetDamage;
         InputManager.instance.swipeDetector.OnSwipeUp -= RestartGame;
 
@@ -83,6 +84,7 @@ public class GameManager : MonoBehaviour
         Load();
         Save();
 
+        GameOver = false;
 
         if (chunkManager == null)
             chunkManager = FindObjectOfType<ChunkManager>();
@@ -100,12 +102,13 @@ public class GameManager : MonoBehaviour
         Debug.Log("Current Coins: " + coins);
     }
 
-    private void GameOver()
+    private void CallGameOver()
     {
         SaveData.PlayerProfile.coins += coins;
         if (SaveData.PlayerProfile.timeScore < timeScore)
             SaveData.PlayerProfile.timeScore = timeScore;
         Save();
+        GameOver = true;
         Debug.Log("Game Over");
     }
 
@@ -129,8 +132,8 @@ public class GameManager : MonoBehaviour
 
     public void GetDamage(int damageValue)
     {
-        health -= damageValue;
-        if (health <= 0)
+        playerReferences.PlayerStats.Health -= damageValue;
+        if (playerReferences.PlayerStats.Health <= 0)
         {
             playerReferences.PlayerStats.OnExplode?.Invoke();
         }

@@ -1,11 +1,11 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
     private PlayerReferences playerReferences;
+    [SerializeField] private int health = 1;
     [SerializeField] private bool invincible;
     [SerializeField] private bool canUseLogic = true;
     [Header("Explosion")]
@@ -21,10 +21,16 @@ public class PlayerStats : MonoBehaviour
 
     public bool Exploded { get => exploded; set => exploded = value; }
     public bool CanUseLogic { get => canUseLogic; set => canUseLogic = value; }
+    public int Health { get => health; set => health = value; }
 
     private void Awake()
     {
         playerReferences = GetComponent<PlayerReferences>();
+    }
+
+    private void Start()
+    {
+        GetStats();
     }
 
     private void OnEnable()
@@ -35,13 +41,21 @@ public class PlayerStats : MonoBehaviour
     private void OnDisable()
     {
         OnExplode -= Explode;
+
+
     }
 
+    private void GetStats()
+    {
+        if (playerReferences == null) return;
+        health = playerReferences.VehicleStats.health;
+    }
 
     private void Explode()
     {
         if (invincible) return;
         if (Exploded) return;
+
         explosionEffect.SetActive(true);
         explosionEffect.transform.SetParent(null, true);
         foreach (GameObject deleteObject in deleteObjects)
@@ -81,5 +95,7 @@ public class PlayerStats : MonoBehaviour
         Exploded = true;
 
     }
+
+
 
 }
