@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.09518291, g: 0.08021096, b: 0.09059392, a: 1}
+  m_IndirectSpecularColor: {r: 0.20429096, g: 0.31317803, b: 0.28693223, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -187,7 +187,7 @@ MonoBehaviour:
   - {fileID: 1012356282696700, guid: a1325a2a143affc4b9f3f26bff632afe, type: 3}
   - {fileID: 1270899215281330, guid: a8112b7ab43cd9a4cb896d6f9fa3230d, type: 3}
   carList: []
-  carAmount: 5
+  carAmount: 50
   carMoveSpeed: 80
   carSpawnRateMin: 3
   carSpawnRateMax: 4
@@ -1246,6 +1246,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 182990392, guid: df6dee8f0f7b63a4d94049f6ed764451, type: 3}
+      propertyPath: invincible
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7494947927406133810, guid: df6dee8f0f7b63a4d94049f6ed764451,
         type: 3}
       propertyPath: m_RootOrder

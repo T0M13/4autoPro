@@ -22,6 +22,7 @@ public class PlayerStats : MonoBehaviour
     public bool Exploded { get => exploded; set => exploded = value; }
     public bool CanUseLogic { get => canUseLogic; set => canUseLogic = value; }
     public int Health { get => health; set => health = value; }
+    public bool Invincible { get => invincible; set => invincible = value; }
 
     private void Awake()
     {
@@ -53,7 +54,7 @@ public class PlayerStats : MonoBehaviour
 
     private void Explode()
     {
-        if (invincible) return;
+        if (Invincible) return;
         if (Exploded) return;
 
         explosionEffect.SetActive(true);

@@ -116,6 +116,8 @@ public class RoadCar : MonoBehaviour
         {
             if (!GameManager.instance.GameOver)
                 Explode();
+            var player = collision.gameObject.GetComponentInParent<PlayerStats>();
+            if (player.Invincible) return;
             GameManager.instance.OnGetDamage?.Invoke(damage);
             damageTriggered = true;
         }

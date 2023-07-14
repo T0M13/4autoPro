@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LoadComponent loadBehaviour;
     [Header("Saved Stats")]
     [SerializeField] private int playerProfileCoins;
-    [SerializeField] private float playerProfileScore;
+    [SerializeField] private float playerProfileHighscore;
 
     public Vector3 StartPosition { get => startPosition; set => startPosition = value; }
     public bool GameOver { get => gameOver; set => gameOver = value; }
